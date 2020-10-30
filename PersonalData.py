@@ -10,7 +10,7 @@ class CharacterClass:
         self.zawod = zawod #string
         #Wygląd
         self.zwrost = zwrost #int
-        self.waga = waga #int
+        self.waga = waga #float
         self.kolor_wlosow = kolor_wlosow #string
         self.kolor_oczu = kolor_oczu #string
         #Online Data
@@ -20,19 +20,19 @@ class CharacterClass:
 
 
 
-Character = CharacterClass("","","",0,"",0,0,"","",False,"","")
+Character = CharacterClass("","","",0,"",0,0.0,"","",False,"","")
 
 def ChangeGender():
         while 1>0:
             print("Wybierz Płeć\n1. Mężczyzna\n2. Kobieta\n3. Inne")
-            Character.plec = int(input("Wybierz Płeć: "))
-            if Character.plec == 1:
+            Character.plec = input("Wybierz Płeć: ")
+            if Character.plec == str(1):
                 Character.plec = "Mężczyzna"
                 break
-            elif Character.plec == 2:
+            elif Character.plec == str(2):
                 Character.plec = "Kobieta"
                 break
-            elif Character.plec == 3:
+            elif Character.plec == str(3):
                 Character.plec = input("Podaj Swoją Płeć")
                 break
             else:
@@ -54,7 +54,15 @@ def ChangeSurname():
         Character.nazwisko = random.choice(["Kowalski","Smith","Pedro"])
 
 def ChangeAge():
-    Character.wiek = int(input("Podaj Wiek: "))
+    Character.wiek = input("Podaj Wiek (Rocznikowo): ")
+    if Character.wiek == "":
+        Character.wiek = random.randrange(0,105)
+
+def ChangeWork():
+    Character.zawod = input("Wpisz Zawód: ")
+    if Character.zawod == "":
+        Character.zawod = random.choice(["Piekarz","Policjant","Strażak","Ratownik"])
+
 
 def ChangePersonalData():
     #Płeć
@@ -99,6 +107,38 @@ def ChangePersonalData():
             else:
                 print("Wybrano nieprawidłową opcję")
                 continue
+    # Wiek
+    if Character.wiek == 0:
+        ChangeAge()
+    else:
+        print("Czy Chcesz Zmienić Wiek?")
+        TakNie = input("T/N: ")
+        while 1>0:
+            if TakNie == "T":
+                ChangeAge()
+            elif TakNie == "N":
+                break
+            else:
+                print("Wybrano nieprawidłową opcję")
+                continue
+    # Zawód
+    if int(Character.wiek) > 17:
+        if Character.zawod == "":
+            ChangeWork()
+        else:
+            print("Czy Chcesz Zmienić Zawód?")
+            TakNie = input("T/N: ")
+            while 1>0:
+                if TakNie == "T":
+                    ChangeWork()
+                elif TakNie == "N":
+                    break
+                else:
+                    print("Wybrano nieprawidłową opcję")
+                    continue
+    else:
+        print("Twoja osobowość jest za młody/a by podjąźć")
+        Character.zawod = "Bezrobotny"
 
 
 print("Witaj Użytkowniku")
@@ -106,4 +146,4 @@ print("Stwórz swoją drugą osobowość")
 print("Zacznijmy od podania danych osobowych")
 ChangePersonalData()
 print("Twoja Druga Osobowość to:")
-print(Character.imie + " " + Character.nazwisko + " (" + Character.plec + ") ")
+print(Character.imie + " " + Character.nazwisko + " (" + Character.plec + ") " + str(Character.wiek) + "lat ")
