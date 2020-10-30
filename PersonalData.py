@@ -53,6 +53,8 @@ def ChangeSurname():
     if Character.nazwisko == "":
         Character.nazwisko = random.choice(["Kowalski","Smith","Pedro"])
 
+def ChangeAge():
+    Character.wiek = int(input("Podaj Wiek: "))
 
 def ChangePersonalData():
     #Płeć
@@ -103,5 +105,5 @@ print("Witaj Użytkowniku")
 print("Stwórz swoją drugą osobowość")
 print("Zacznijmy od podania danych osobowych")
 ChangePersonalData()
-print("Twoja Postać to:")
+print("Twoja Druga Osobowość to:")
 print(Character.imie + " " + Character.nazwisko + " (" + Character.plec + ") ")
