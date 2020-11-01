@@ -80,9 +80,42 @@ def ChangeWork():
     else:
         print("Wpisany Zawód to \033[32m" + Character.zawod + "\033[0m")
 
+def ChangeHeight():
+    Character.zwrost = input("Podaj Zwrost (w centrymetrach): ")
+    if Character.zwrost == "":
+        Character.zwrost = random.randrange(130,220)
+        print("Wylosowany Zwrost to \033[32m" + str(Character.zwrost) + "\033[0m")
+    else:
+        print("Wpisany Zwrost to \033[32m" + str(Character.zwrost) + "\033[0m")
+
+def ChangeWeight():
+    Character.waga = input("Podaj swoją wagę (w centrymetrach): ")
+    if Character.waga == "":
+        Character.waga = random.uniform(40.0,250.0)
+        Character.waga = round(Character.waga, 1)
+        print("Wylosowana Waga to \033[32m" + str(Character.waga) + "\033[0m KG")
+    else:
+        print("Wpisana Waga to \033[32m" + str(Character.waga) + "\033[0m KG")
+
+def ChangeEye():
+    Character.kolor_oczu = input("Podaj Kolor Oczu: ")
+    if Character.kolor_oczu == "":
+        Character.kolor_oczu = random.choice(["Zielone","Niebieski","Piwne"])
+        print("Wylosowany Kolor Oczu to \033[32m" + Character.kolor_oczu + "\033[0m")
+    else:
+        print("Wpisany Kolor Oczu to \033[32m" + Character.kolor_oczu + "\033[0m")
+
+def ChangeHair():
+    Character.kolor_wlosow = input("Podaj Kolor Włosów: ")
+    if Character.kolor_wlosow == "":
+        Character.kolor_wlosow = random.choice(["Blond","Rude","Brązowe", "Czarne"])
+        print("Wylosowanny Kolor Włosów to \033[32m" + Character.kolor_wlosow + "\033[0m")
+    else:
+        print("Wpisanny Kolor Włosów to \033[32m" + Character.kolor_wlosow + "\033[0m")
+
 
 def ChangePersonalData():
-    #Płeć
+    # Płeć
     if Character.plec == "":
         ChangeGender()
     else:
@@ -97,7 +130,7 @@ def ChangePersonalData():
             else:
                 print("\033[31mWybrano nieprawidłową opcję\033[0m")
                 continue
-    #FirstName
+    # Imię
     if Character.imie == "":
         ChangeName()
     else:
@@ -162,20 +195,84 @@ def ChangePersonalData():
         print("Musisz Ukończyć \033[31m18 \033[0mlat, by móc zacząć pracować")
         Character.zawod = "Bezrobotny"
 
+def ChangeCharacterLook():
+    # Zwrost
+    if Character.zwrost == 0:
+        ChangeHeight()
+    else:
+        while 1>0:
+            print("Czy Chcesz Zmienić Zwrost?")
+            TakNie = input("\033[32mT\033[0m/\033[31mN\033[0m: ")
+            if TakNie == "T":
+                ChangeHeight()
+                break
+            elif TakNie == "N":
+                break
+            else:
+                print("\033[31mWybrano nieprawidłową opcję\033[0m")
+                continue
+    # Waga
+    if Character.waga == 0:
+        ChangeWeight()
+    else:
+        while 1>0:
+            print("Czy Chcesz Zmienić Wagę?")
+            TakNie = input("\033[32mT\033[0m/\033[31mN\033[0m: ")
+            if TakNie == "T":
+                ChangeWeight()
+                break
+            elif TakNie == "N":
+                break
+            else:
+                print("\033[31mWybrano nieprawidłową opcję\033[0m")
+                continue
+    # Kolor Oczu
+    if Character.kolor_oczu == "":
+        ChangeEye()
+    else:
+        while 1>0:
+            print("Czy Chcesz Zmienić Kolor Oczu?")
+            TakNie = input("\033[32mT\033[0m/\033[31mN\033[0m: ")
+            if TakNie == "T":
+                ChangeEye()
+                break
+            elif TakNie == "N":
+                break
+            else:
+                print("\033[31mWybrano nieprawidłową opcję\033[0m")
+                continue
+    # Kolor Włosów
+    if Character.kolor_wlosow == "":
+        ChangeHair()
+    else:
+        while 1>0:
+            print("Czy Chcesz Zmienić Kolor Włosów?")
+            TakNie = input("\033[32mT\033[0m/\033[31mN\033[0m: ")
+            if TakNie == "T":
+                ChangeHair()
+                break
+            elif TakNie == "N":
+                break
+            else:
+                print("\033[31mWybrano nieprawidłową opcję\033[0m")
+                continue
+
 ##### PRIVATE #####
 
 isSetPersonalData = False
+isSetLook = False
+isSetOnlineData = False
 
 ##### CODE #####
 
 print("Witaj Użytkowniku")
 print("Stwórz swoją drugą osobowość")
 print("Zacznijmy od podania danych osobowych")
-while isSetPersonalData == False:
-    ChangePersonalData()
+while isSetPersonalData == False: 
+    ChangePersonalData() 
     print("Czy Wpisane przez Ciebie dane są prawidłowe?")
     print("Imię: \033[35m" + Character.imie + "\033[0m" + ", Nazwisko: \033[35m" + Character.nazwisko + "\033[0m" + ", Płeć: \033[35m" + Character.plec + "\033[0m" + ", Wiek: \033[35m" + str(Character.wiek) + "lat\033[0m" + ", Zawód: \033[35m" + Character.zawod + "\033[0m")
-    while 1 > 0:
+    while True:
             git_dane = input("\033[32mT\033[0m/\033[31mN\033[0m: ")
             if git_dane == "T":
                 isSetPersonalData = True
@@ -187,5 +284,24 @@ while isSetPersonalData == False:
                 continue
     continue
 
+while isSetLook == False:
+    ChangeCharacterLook() #pętle
+    print("Czy Wybrany przez Ciebie wyglą są prawidłowy?")
+    #print("Imię: \033[35m" + Character.imie + "\033[0m" + ", Nazwisko: \033[35m" + Character.nazwisko + "\033[0m" + ", Płeć: \033[35m" + Character.plec + "\033[0m" + ", Wiek: \033[35m" + str(Character.wiek) + "lat\033[0m" + ", Zawód: \033[35m" + Character.zawod + "\033[0m")
+    while True:
+            git_dane = input("\033[32mT\033[0m/\033[31mN\033[0m: ")
+            if git_dane == "T":
+                isSetLook = True
+                break
+            elif git_dane == "N":
+                break
+            else:
+                print("\033[31mWybrano nieprawidłową opcję\033[0m")
+                continue
+    continue
+
 print("Twoja Druga Osobowość to:")
 print(Character.imie + " " + Character.nazwisko + " (" + Character.plec + ") " + str(Character.wiek) + "lat ")
+
+
+
