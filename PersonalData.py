@@ -50,13 +50,13 @@ def ChangeName():
     Character.imie = input("Podaj Imie: ")
     if Character.imie == "":
         if Character.plec == "Mężczyzna":
-            Character.imie = random.choice(["Adam","Tomek","Zdziź","Łukasz"])
+            Character.imie = random.choice(["Adam","Tomek","Zdziź","Łukasz","Dafydd","Keyaan","Berat","Hashir","Judah","Roger","Kaylen","Geoffrey","Garin","Iain","Tony","Neal"])
             print("Wylosowane Imię to \033[32m" + Character.imie + "\033[0m")
         elif Character.plec == "Kobieta":
-            Character.imie = random.choice(["Ola","Ala","Wiktoria","Alicja"])
+            Character.imie = random.choice(["Ola","Ala","Wiktoria","Alicja","Janelle","Mazie","Emily","Cheyenne","Leanne","Nicola","Kia","Yvette","Annette","Patrycja"])
             print("Wylosowane Imię to \033[32m" + Character.imie + "\033[0m")
         else:
-            Character.imie = random.choice(["Jordan","River","Yoshi","Max"])
+            Character.imie = random.choice(["Jordan","River","Yoshi","Max","Indiana","Rudy","Alix"])
             print("Wylosowane Imię to \033[32m" + Character.imie + "\033[0m")
     else:
         print("Wpisane Imię to \033[32m" + Character.imie + "\033[0m")
@@ -121,7 +121,7 @@ def ChangeHair():
 def ChangeNickname():
     Character.nickname = input("Podaj swój nick: ")
     if Character.nickname == "":
-        Character.nickname = random.choice(["Zielone","Niebieski","Piwne"])
+        Character.nickname = random.choice(["Noobmaster69","Freeman","EnigmaFactory","GeoJeo","HxC","Nerreth","Marcus"])
         print("Wylosowany Nick to \033[32m" + Character.nickname + "\033[0m")
     else:
         print("Wpisany Nick to \033[32m" + Character.nickname + "\033[0m")
