@@ -1,0 +1,1 @@
+NazwaFunckjiLambda = lambda zmienna1, zmienna2, zmienna3 : int(zmienna1) * (int(zmienna2) + int(zmienna3))
