@@ -1,0 +1,6 @@
+oto twoje dane: imie es  nazwisko es
+oto twoje dane: imie re  nazwisko er
+oto twoje dane: imie piotr  nazwisko 2
+oto twoje dane: imie 23  nazwisko 42
+oto twoje dane: imie Piotrek  nazwisko Kabat
+Oto twoje dane: imie: Test  nazwisko: Nowe
